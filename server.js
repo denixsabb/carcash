@@ -11,7 +11,13 @@ const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 const PORT = process.env.PORT || 3000;
 
-const db = new Database("denix.sqlite");
+const db = new Database(
+  path.join(
+    __dirname,
+    "data",
+    "denix.sqlite"
+  )
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
