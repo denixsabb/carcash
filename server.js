@@ -4586,12 +4586,13 @@ app.post(
    START
 ========================= */
 
-app.listen(
-  PORT,
-  () => {
+const PORT = process.env.PORT || 10000;
 
-    console.log(
-      `CarCash running on http://localhost:${PORT}`
-    );
+const server = app.listen(PORT, "0.0.0.0", () => {
+  console.log(`CarCash running on port ${PORT}`);
+});
+
+server.keepAliveTimeout = 120000;
+server.headersTimeout = 120000;
   }
 );
